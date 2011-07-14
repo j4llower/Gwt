@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <description>GWT</description>
+    <display-name>com.j4llower.testtask.gwt</display-name>
+    <distributable />
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+      classpath:com/j4llower/testtask/gwt/webapp/WEB_INF/hibernate.cfg.xml
+    </param-value>
+  </context-param>
+  
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>personStoreServiceImpl</servlet-name>
+    <servlet-class>com.j4llower.testtask.gwt.server.PersonStoreServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>personStoreServiceImpl</servlet-name>
+    <url-pattern>/gwt/store</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>main.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>
+
