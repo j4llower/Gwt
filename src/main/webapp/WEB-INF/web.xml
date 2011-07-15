@@ -5,14 +5,7 @@
     <description>GWT</description>
     <display-name>com.j4llower.testtask.gwt</display-name>
     <distributable />
-
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>
-      classpath:com/j4llower/testtask/gwt/webapp/WEB_INF/hibernate.cfg.xml
-    </param-value>
-  </context-param>
-  
+ 
   <!-- Servlets -->
   <servlet>
     <servlet-name>personStoreServiceImpl</servlet-name>
@@ -36,8 +29,7 @@
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>main.html</welcome-file>
+    <welcome-file>Gwt.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
-

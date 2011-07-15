@@ -1,4 +1,4 @@
-package com.j4llower.testtask.gwt.server;
+package com.j4llower.testtask.gwt.server.service.rcp;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.j4llower.testtask.gwt.client.service.rpc.PersonStoreService;

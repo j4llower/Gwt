@@ -15,6 +15,6 @@ import com.j4llower.testtask.gwt.shared.proxy.PersonProxy;
 @Service(value = PersonDao.class, locator = DaoServiceLocator.class)
 public interface PersonService extends RequestContext {
 
-	Request<List<PersonProxy>> listAll();
+	Request<List<PersonProxy>> getAll();
 	
 }

@@ -7,7 +7,7 @@ import com.google.web.bindery.requestfactory.shared.ServiceLocator;
  * the @Service annotation for any RequestFactory service stub
  */
 public class DaoServiceLocator implements ServiceLocator{
-	
+
 	public Object getInstance(Class<?> clazz) {
 		try {
 			return clazz.newInstance();

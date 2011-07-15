@@ -5,7 +5,7 @@
   <groupId>com.j4llower.testtask</groupId>
   <artifactId>gwt</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>gwt</name>
   <url>http://maven.apache.org</url>
@@ -15,7 +15,8 @@
     <gwtVersion>2.3.0</gwtVersion>
     <gaeVersion>1.5.0.1</gaeVersion>
 	<gaeHome>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gaeVersion}/appengine-java-sdk-${gaeVersion}</gaeHome>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <gae.application.version>1</gae.application.version>
   </properties>
 
   <repositories>
@@ -27,11 +28,30 @@
 
   <dependencies>
   
+  	<dependency>
+	  <groupId>javax.servlet</groupId>
+	  <artifactId>servlet-api</artifactId>
+	  <version>2.5</version>
+	  <scope>provided</scope>
+	</dependency>
+  
     <dependency>
       <groupId>hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
       <version>1.8.0.10</version>
     </dependency>
+    
+    <dependency>
+	  <groupId>javax.validation</groupId>
+	  <artifactId>validation-api</artifactId>
+	  <version>1.0.0.GA</version>
+	</dependency>
+	<dependency>
+	  <groupId>javax.validation</groupId>
+	  <artifactId>validation-api</artifactId>
+	  <version>1.0.0.GA</version>
+	  <classifier>sources</classifier>
+	</dependency>
   
      <!-- Hibernate -->
     <dependency>
@@ -55,16 +75,13 @@
 		<groupId>com.google.gwt</groupId>
 		<artifactId>gwt-servlet</artifactId>
 		<version>${gwtVersion}</version>
+		<scope>runtime</scope>
 	</dependency>
 	<dependency>
 		<groupId>com.google.gwt</groupId>
 		<artifactId>gwt-user</artifactId>
 		<version>${gwtVersion}</version>
-	</dependency>
-	<dependency>
-		<groupId>com.google.gwt</groupId>
-		<artifactId>gwt-dev</artifactId>
-		<version>${gwtVersion}</version>
+		<scope>provided</scope>
 	</dependency>
 	
 	<!-- GAE -->			  
@@ -96,6 +113,27 @@
   
   <build>
     <plugins>
+    
+	  <!-- IDE -->
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-eclipse-plugin</artifactId>
+		<version>2.8</version>
+		<configuration>
+		  <downloadSources>true</downloadSources>
+		  <downloadJavadocs>true</downloadJavadocs>
+		  <wtpversion>2.0</wtpversion>
+		  <additionalBuildcommands>
+			<buildCommand>
+			  <name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
+			</buildCommand>
+		  </additionalBuildcommands>
+		  <additionalProjectnatures>
+			<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+			<projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature>
+		  </additionalProjectnatures>
+		</configuration>
+	  </plugin>
 
 	  <plugin>
 		<groupId>org.codehaus.mojo</groupId>
@@ -120,7 +158,7 @@
 		</dependencies>
 		<configuration>
 	 	  <appEngineVersion>${gaeVersion}</appEngineVersion>
-		  <appEngineHome>${gae.home}</appEngineHome>
+		  <appEngineHome>${gaeHome}</appEngineHome>
 		  <logLevel>INFO</logLevel>
 		  <runTarget>/Gwt.html</runTarget>
 		  <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
@@ -136,14 +174,7 @@
 		  </execution>
 		</executions>
 	  </plugin>
-      
-      <plugin>
-		<artifactId>maven-release-plugin</artifactId>
-		<configuration>
-		  <goals>gae:deploy</goals>
-		</configuration>
-	  </plugin>
-      
+            
     </plugins>
     
     <finalName>j4llower-gmail-com</finalName>
