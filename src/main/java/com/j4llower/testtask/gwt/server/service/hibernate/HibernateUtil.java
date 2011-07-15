@@ -1,4 +1,4 @@
-package com.j4llower.testtask.gwt.server;
+package com.j4llower.testtask.gwt.server.service.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

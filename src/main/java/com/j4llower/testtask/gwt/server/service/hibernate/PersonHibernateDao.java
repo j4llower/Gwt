@@ -1,4 +1,4 @@
-package com.j4llower.testtask.gwt.server;
+package com.j4llower.testtask.gwt.server.service.hibernate;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
@@ -6,7 +6,8 @@ import java.util.List;
 
 import org.hibernate.classic.Session;
 
-import com.j4llower.testtask.gwt.client.Person;
+import com.j4llower.testtask.gwt.domain.Person;
+import com.j4llower.testtask.gwt.server.service.PersonDao;
 
 public class PersonHibernateDao implements PersonDao {
 

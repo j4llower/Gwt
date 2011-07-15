@@ -13,8 +13,17 @@
   <properties>
     <hibernateVersion>3.3.2.GA</hibernateVersion>
     <gwtVersion>2.3.0</gwtVersion>
+    <gaeVersion>1.5.0.1</gaeVersion>
+	<gaeHome>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gaeVersion}/appengine-java-sdk-${gaeVersion}</gaeHome>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    
   </properties>
+
+  <repositories>
+	<repository>
+	  <id>objectify-appengine</id>
+	  <url>http://objectify-appengine.googlecode.com/svn/maven</url>
+	</repository>
+  </repositories>
 
   <dependencies>
   
@@ -57,6 +66,24 @@
 		<artifactId>gwt-dev</artifactId>
 		<version>${gwtVersion}</version>
 	</dependency>
+	
+	<!-- GAE -->			  
+    <dependency>
+		<groupId>com.google.appengine</groupId>
+		<artifactId>appengine-api-1.0-sdk</artifactId>
+		<version>${gaeVersion}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.google.appengine</groupId>
+		<artifactId>appengine-api-labs</artifactId>
+		<version>${gaeVersion}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.googlecode.objectify</groupId>
+		<artifactId>objectify</artifactId>
+		<version>2.2.3</version>
+	</dependency>
 				  
     <dependency>
       <groupId>junit</groupId>
@@ -67,23 +94,56 @@
     
   </dependencies>
   
-
   <build>
-     <plugins>
+    <plugins>
+
+	  <plugin>
+		<groupId>org.codehaus.mojo</groupId>
+	 	<artifactId>gwt-maven-plugin</artifactId>
+	 	<version>2.2.0</version>
+	  	<dependencies>
+		  <dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwtVersion}</version>
+		  </dependency>
+		  <dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwtVersion}</version>
+		  </dependency>
+		  <dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwtVersion}</version>
+		  </dependency>
+		</dependencies>
+		<configuration>
+	 	  <appEngineVersion>${gaeVersion}</appEngineVersion>
+		  <appEngineHome>${gae.home}</appEngineHome>
+		  <logLevel>INFO</logLevel>
+		  <runTarget>/Gwt.html</runTarget>
+		  <server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>
+		  <copyWebapp>true</copyWebapp>
+		</configuration>
+		<executions>
+		  <execution>
+			<id>gwtcompile</id>
+			<phase>prepare-package</phase>
+			<goals>
+			  <goal>compile</goal>
+			</goals>
+		  </execution>
+		</executions>
+	  </plugin>
+      
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>gwt-maven-plugin</artifactId>
-        <version>2.3.0-1</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>compile</goal>
-              <!-- <goal>generateAsync</goal>
-              <goal>test</goal> -->
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+		<artifactId>maven-release-plugin</artifactId>
+		<configuration>
+		  <goals>gae:deploy</goals>
+		</configuration>
+	  </plugin>
+      
     </plugins>
     
     <finalName>j4llower-gmail-com</finalName>

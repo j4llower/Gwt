@@ -1,4 +1,4 @@
-package com.j4llower.testtask.gwt.client;
+package com.j4llower.testtask.gwt.domain;
 
 import java.io.Serializable;
 

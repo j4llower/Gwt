@@ -1,8 +1,8 @@
-package com.j4llower.testtask.gwt.server;
+package com.j4llower.testtask.gwt.server.service;
 
 import java.util.List;
 
-import com.j4llower.testtask.gwt.client.Person;
+import com.j4llower.testtask.gwt.domain.Person;
 
 /**
  * Basic Data Access Object interface.

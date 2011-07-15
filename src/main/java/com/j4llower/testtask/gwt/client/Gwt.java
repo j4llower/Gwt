@@ -12,6 +12,8 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
+import com.j4llower.testtask.gwt.client.service.rpc.PersonStoreService;
+import com.j4llower.testtask.gwt.client.service.rpc.PersonStoreServiceAsync;
 import com.j4llower.testtask.gwt.shared.FieldVerifier;
 
 /**

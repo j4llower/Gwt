@@ -1,4 +1,4 @@
-package com.j4llower.testtask.gwt.client;
+package com.j4llower.testtask.gwt.client.service.rpc;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
