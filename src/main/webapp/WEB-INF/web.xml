@@ -9,12 +9,12 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>personStoreServiceImpl</servlet-name>
-    <servlet-class>com.j4llower.testtask.gwt.server.PersonStoreServiceImpl</servlet-class>
+    <servlet-class>com.j4llower.testtask.gwt.server.service.rcp.PersonStoreServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>personStoreServiceImpl</servlet-name>
-    <url-pattern>/gwtRcp</url-pattern>
+    <url-pattern>/gwt/rpc</url-pattern>
   </servlet-mapping>
   
   <servlet>

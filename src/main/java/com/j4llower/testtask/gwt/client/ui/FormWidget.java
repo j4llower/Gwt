@@ -12,7 +12,9 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.j4llower.testtask.gwt.client.ClientFactory;
+import com.j4llower.testtask.gwt.client.service.rpc.PersonStoreService;
 import com.j4llower.testtask.gwt.client.service.rpc.PersonStoreServiceAsync;
+import com.j4llower.testtask.gwt.shared.service.PersonRequestFactory;
 
 public class FormWidget extends Composite {
 
@@ -34,26 +36,29 @@ public class FormWidget extends Composite {
 		
 		this.clientFactory = clientFactory;
 		
-		final PersonStoreServiceAsync personStoreService = 
-				this.clientFactory.getPersonStoreService(); 
+		final PersonStoreServiceAsync personStoreService = GWT.create(PersonStoreService.class);
+		
+		//final PersonStoreServiceAsync personStoreService = 
+		//		this.clientFactory.getPersonStoreService(); 
 		
         addButton.addClickHandler(new ClickHandler() {
         	public void onClick(ClickEvent event) {
 
             	String firstNameToServer = firstNameField.getText();
- 				String familyNameToServer = firstNameField.getText();
- 				String[] input = {firstNameToServer,familyNameToServer};
+ 				String familyNameToServer = familyNameField.getText();
+ 				String input = firstNameToServer;
 
  				addButton.setEnabled(false);
  				personStoreService.storePerson(input,
- 						new AsyncCallback<String[]>() {
+ 						new AsyncCallback<String>() {
  							public void onFailure(Throwable caught) {
- 								errorLabel.setText("Remote Procedure Call - Failure");
+ 								errorLabel.setText("Remote Procedure Call - Failure: " +
+ 										caught.getMessage());
  								errorLabel.addStyleName("serverResponseLabelError");
  								addButton.setEnabled(true);
  							}
 
- 							public void onSuccess(String[] arg0) {
+ 							public void onSuccess(String arg0) {
  								addButton.setEnabled(true);
  							}
  						});

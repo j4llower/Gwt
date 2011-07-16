@@ -12,7 +12,7 @@ import com.j4llower.testtask.gwt.shared.service.PersonRequestFactory;
 public class ClientFactoryImpl implements ClientFactory {
 	
 	private final EventBus eventBus = new SimpleEventBus();
-	private PersonStoreServiceAsync personStoreService = GWT.create(PersonStoreService.class);
+	//private PersonStoreServiceAsync personStoreService = GWT.create(PersonStoreService.class);
 	private PersonRequestFactory personRequestFactory = GWT.create(PersonRequestFactory.class);
 	private GwtApp app = new DesktopApp(this);
 	
@@ -20,9 +20,9 @@ public class ClientFactoryImpl implements ClientFactory {
 		personRequestFactory.initialize(eventBus);
 	}
 		
-	public PersonStoreServiceAsync getPersonStoreService() {
+	/*public PersonStoreServiceAsync getPersonStoreService() {
 		return personStoreService;
-	}
+	}*/
 
 	public EventBus getEventBus() {
 		return eventBus;

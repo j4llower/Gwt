@@ -6,6 +6,6 @@
 		
 	</ui:style>
 	<g:HTMLPanel>
-	  <c:CellTable width='100%' ui:field='table' />
+	  <c:CellTable width='100%' ui:field='personList' />
 	</g:HTMLPanel>
 </ui:UiBinder> 

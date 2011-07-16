@@ -6,17 +6,13 @@ import com.j4llower.testtask.gwt.shared.service.PersonRequestFactory;
 
 public interface ClientFactory {
 
-	//ListsView getListsView();
-
-	//EditListView getEditListView();
-
 	EventBus getEventBus();
 	
 	// RequestFactory
 	PersonRequestFactory getRequestFactory();
 
 	// RCP
-	PersonStoreServiceAsync getPersonStoreService();
+	//PersonStoreServiceAsync getPersonStoreService();
 
 	GwtApp getApp();
 	
