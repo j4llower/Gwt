@@ -10,30 +10,30 @@ import com.j4llower.testtask.gwt.shared.proxy.PersonProxy;
 import com.j4llower.testtask.gwt.shared.service.PersonRequestFactory;
 
 public class UserDataProvider {
-	private final HandlerManager handlerManager = new HandlerManager(this);
-    
-	private final PersonRequestFactory requests;
-    
-	public UserDataProvider(PersonRequestFactory requests) {
-		    this.requests = requests;
-		  }
-	
-	public HandlerRegistration addRowDataHandler(
-	      DataAvailableEvent.Handler handler) {
-	    return handlerManager.addHandler(DataAvailableEvent.TYPE, handler);
-	}
-	
-	public void updateRowData() {
+    private final HandlerManager handlerManager = new HandlerManager(this);
 
-		requests.personRequest().getAllPeople().fire(
-				new Receiver<List<PersonProxy>>() {
-					@Override
-		            public void onSuccess(List<PersonProxy> response) {
-		                pushResults(response);
-		              }
-		        });
-	} 
-    
+    private final PersonRequestFactory requests;
+
+    public UserDataProvider(PersonRequestFactory requests) {
+            this.requests = requests;
+          }
+
+    public HandlerRegistration addRowDataHandler(
+          DataAvailableEvent.Handler handler) {
+        return handlerManager.addHandler(DataAvailableEvent.TYPE, handler);
+    }
+
+    public void updateRowData() {
+
+        requests.personRequest().getAllPeople().fire(
+                new Receiver<List<PersonProxy>>() {
+                    @Override
+                    public void onSuccess(List<PersonProxy> response) {
+                        pushResults(response);
+                      }
+                });
+    } 
+
     private void pushResults(List<PersonProxy> people) {
         handlerManager.fireEvent(new DataAvailableEvent(people));
     }

@@ -8,7 +8,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("rpc")
 public interface PersonStoreService extends RemoteService {
-	
-	String storePerson(String input) throws IllegalArgumentException;
+
+    void savePerson(String[] input) throws IllegalArgumentException;
 
 }

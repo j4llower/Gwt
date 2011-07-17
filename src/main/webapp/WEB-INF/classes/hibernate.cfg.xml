@@ -6,9 +6,8 @@
   <session-factory>
      <!-- Database connection settings -->
         <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-        <!-- <property name="connection.url">jdbc:hsqldb:file:db/gwt</property> -->
-        <property name="connection.url">jdbc:hsqldb:mem:gwt</property>
-        <property name="connection.username">SA</property>
+        <property name="connection.url">jdbc:hsqldb:file:${user.dir}/webapps/j4llower-gmail-com/db/gwt;shutdown=true</property>
+        <property name="connection.username">sa</property>
         <property name="connection.password"></property>
 
         <!-- JDBC connection pool (use the built-in) -->
@@ -17,10 +16,10 @@
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
 
-  		<!-- Enable Hibernate's automatic session context management -->
+        <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
-  		
-  		<!-- Disable the second-level cache  -->
+
+        <!-- Disable the second-level cache  -->
         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 
         <!-- Echo all executed SQL to stdout -->

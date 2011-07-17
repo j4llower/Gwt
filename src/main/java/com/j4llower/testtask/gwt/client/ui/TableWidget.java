@@ -15,61 +15,61 @@ import com.j4llower.testtask.gwt.shared.proxy.PersonProxy;
 
 public class TableWidget extends Composite {
 
-	interface Binder extends UiBinder<Widget, TableWidget> {
-	}
+    interface Binder extends UiBinder<Widget, TableWidget> {
+    }
 
-	@UiField
-	Grid grid;
-	
-	private final UserDataProvider provider;
+    @UiField
+    Grid grid;
 
-	private HandlerRegistration rowDataRegistration;	
+    private final UserDataProvider provider;
 
-	public TableWidget(UserDataProvider provider, int rowCount) {
-		    this.provider = provider;
-		    Binder binder = GWT.create(Binder.class);
-		    initWidget(binder.createAndBindUi(this));
-		    initTable(rowCount);
-		  }
-	
-	/**
-	  * Attach to the event bus only when the widget is attached to the DOM.
-	  */
-	@Override
-	protected void onLoad() {
-	    rowDataRegistration = provider.addRowDataHandler(
-	    		new DataAvailableEvent.Handler() {
-	    			public void onRowData(DataAvailableEvent event) {
-	    				accept(event.getPeople());
-	    			}
-	    		});
-	}
+    private HandlerRegistration rowDataRegistration;
 
-	@Override
-	protected void onUnload() {
-	    rowDataRegistration.removeHandler();
-	}
+    public TableWidget(UserDataProvider provider, int rowCount) {
+        this.provider = provider;
+        Binder binder = GWT.create(Binder.class);
+        initWidget(binder.createAndBindUi(this));
+        initTable(rowCount);
+    }
 
-	private void accept(List<PersonProxy> people) {
+    /**
+      * Attach to the event bus only when the widget is attached to the DOM.
+      */
+    @Override
+    protected void onLoad() {
+        rowDataRegistration = provider.addRowDataHandler(
+                new DataAvailableEvent.Handler() {
+                    public void onRowData(DataAvailableEvent event) {
+                        accept(event.getPeople());
+                    }
+                });
+    }
 
-	    int destRowCount = getDataRowCount();
-	    assert (people.size() <= destRowCount) : "Too many rows";
+    @Override
+    protected void onUnload() {
+        rowDataRegistration.removeHandler();
+    }
 
-	    int srcRowIndex = 0;
-	    int srcRowCount = people.size();
-	    int destRowIndex = 1;
-	    for (; srcRowIndex < srcRowCount; ++srcRowIndex, ++destRowIndex) {
-	    	PersonProxy person = people.get(srcRowIndex);
-	    	grid.setText(destRowIndex, 0, person.getFirstName());
-	    	grid.setText(destRowIndex, 1, person.getFamilyName());
-	    }
-	}
-	
-	private int getDataRowCount() {
-	    return grid.getRowCount();
-	}
-	
-	private void initTable(int rowCount) {
-	    grid.resizeRows(rowCount);
-	}
+    private void accept(List<PersonProxy> people) {
+
+        int destRowCount = getDataRowCount();
+        assert (people.size() <= destRowCount) : "Too many rows";
+
+        int srcRowIndex = 0;
+        int srcRowCount = people.size();
+        int destRowIndex = 1;
+        for (; srcRowIndex < srcRowCount; ++srcRowIndex, ++destRowIndex) {
+            PersonProxy person = people.get(srcRowIndex);
+            grid.setText(destRowIndex, 0, person.getFirstName());
+            grid.setText(destRowIndex, 1, person.getFamilyName());
+        }
+    }
+
+    private int getDataRowCount() {
+        return grid.getRowCount();
+    }
+
+    private void initTable(int rowCount) {
+        grid.resizeRows(rowCount);
+    }
 }

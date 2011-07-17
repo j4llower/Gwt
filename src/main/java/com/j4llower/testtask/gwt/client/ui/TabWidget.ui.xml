@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+    xmlns:g="urn:import:com.google.gwt.user.client.ui"
+    xmlns:app="urn:import:com.j4llower.testtask.gwt.client.ui">
+    <ui:style>
+        .tabPanel
+        {
+            margin: 10px;
+        }
+    </ui:style>
+    <g:TabLayoutPanel addStyleNames="{style.tabPanel}" ui:field="tabPanel" barUnit="PX" barHeight="60" width="400px" height="400px">
+        <g:tab>
+            <g:header>
+                Add
+            </g:header>
+            <app:FormWidget ui:field="form"/>
+        </g:tab>
+        <g:tab>
+            <g:header>
+                View
+            </g:header>
+            <app:TableWidget ui:field="table"/>
+        </g:tab>
+    </g:TabLayoutPanel>
+</ui:UiBinder>

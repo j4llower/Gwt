@@ -5,31 +5,31 @@
     <description>GWT</description>
     <display-name>com.j4llower.testtask.gwt</display-name>
     <distributable />
- 
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>personStoreServiceImpl</servlet-name>
-    <servlet-class>com.j4llower.testtask.gwt.server.service.rcp.PersonStoreServiceImpl</servlet-class>
-  </servlet>
 
-  <servlet-mapping>
-    <servlet-name>personStoreServiceImpl</servlet-name>
-    <url-pattern>/gwt/rpc</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>requestFactoryServlet</servlet-name>
-    <servlet-class>com.google.web.bindery.requestfactory.server.RequestFactoryServlet</servlet-class>
-  </servlet>
+    <!-- Servlets -->
+    <servlet>
+        <servlet-name>personStoreServiceImpl</servlet-name>
+        <servlet-class>com.j4llower.testtask.gwt.server.service.rcp.PersonStoreServiceImpl</servlet-class>
+    </servlet>
 
-  <servlet-mapping>
-    <servlet-name>requestFactoryServlet</servlet-name>
-    <url-pattern>/gwtRequest</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>Gwt.html</welcome-file>
-  </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>personStoreServiceImpl</servlet-name>
+        <url-pattern>/gwt/rpc</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>requestFactoryServlet</servlet-name>
+        <servlet-class>com.google.web.bindery.requestfactory.server.RequestFactoryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>requestFactoryServlet</servlet-name>
+        <url-pattern>/gwtRequest</url-pattern>
+    </servlet-mapping>
+
+    <!-- Default page to serve -->
+    <welcome-file-list>
+        <welcome-file>Gwt.html</welcome-file>
+    </welcome-file-list>
 
 </web-app>

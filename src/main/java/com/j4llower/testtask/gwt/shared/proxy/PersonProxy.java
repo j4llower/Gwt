@@ -8,13 +8,13 @@ import com.j4llower.testtask.gwt.server.locator.PersonLocator;
 @ProxyFor(value = Person.class, locator = PersonLocator.class)
 public interface PersonProxy extends EntityProxy {
 
-	String getFirstName();
-	
-	void setFirstName(String firstName);
-	
-	String getFamilyName();
-	
-	void setFamilyName(String familyName);
-	
-	public long getId();
+    String getFirstName();
+
+    void setFirstName(String firstName);
+
+    String getFamilyName();
+
+    void setFamilyName(String familyName);
+
+    public long getId();
 }

@@ -1,32 +1,32 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-  xmlns:g="urn:import:com.google.gwt.user.client.ui">
-  <ui:style>
-    .grid {
-        margin: 10px;
-        width: 400px;
-    }
-    .name {
-        width: 50%;
-    }
-    .header {
-        text-align: left;
-        font-weight: bold;
-        text-decoration: underline;
-    }
-  </ui:style>
-  <g:DockLayoutPanel unit="EX">
-    <g:center>
-      <g:Grid ui:field="grid" styleName="{style.grid}">
-        <g:row>
-          <g:cell>
-            <div class="{style.name} {style.header}">First Name</div>
-          </g:cell>
-          <g:cell>
-            <div class="{style.name} {style.header}">Family Name</div>
-          </g:cell>
-        </g:row>
-      </g:Grid>
-    </g:center>
-  </g:DockLayoutPanel>
+    xmlns:g="urn:import:com.google.gwt.user.client.ui">
+    <ui:style>
+        .grid {
+            margin: 10px;
+            width: 400px;
+        }
+        .name {
+            width: 50%;
+            border-bottom: 1px solid #cdcdcd;
+        }
+        .header {
+            text-align: left;
+            font-weight: bold;
+        }
+    </ui:style>
+    <g:DockLayoutPanel unit="EX">
+        <g:center>
+            <g:Grid ui:field="grid" styleName="{style.grid}">
+                <g:row>
+                    <g:cell>
+                        <div class="{style.name} {style.header}">First Name</div>
+                    </g:cell>
+                    <g:cell>
+                        <div class="{style.name} {style.header}">Family Name</div>
+                    </g:cell>
+                </g:row>
+            </g:Grid>
+        </g:center>
+    </g:DockLayoutPanel>
 </ui:UiBinder> 

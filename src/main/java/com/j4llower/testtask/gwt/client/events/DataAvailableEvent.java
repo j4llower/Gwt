@@ -12,32 +12,33 @@ import com.j4llower.testtask.gwt.shared.proxy.PersonProxy;
  * Indicates that new data is available to the application.
  */
 public class DataAvailableEvent extends GwtEvent<DataAvailableEvent.Handler> {
-	
-	/**
-	 * Handles {@link DataAvailableEvent}.
-	 */
-	public interface Handler extends EventHandler {
-		void onRowData(DataAvailableEvent event);
-	}
 
-	public static final Type<Handler> TYPE = new Type<Handler>();
-	private final List<PersonProxy> people;
+    /**
+     * Handles {@link DataAvailableEvent}.
+     */
+    public interface Handler extends EventHandler {
+        void onRowData(DataAvailableEvent event);
+    }
 
-	public DataAvailableEvent(List<PersonProxy> people) {
-		this.people = Collections.unmodifiableList(
-		new ArrayList<PersonProxy>(people));
-	}
+    public static final Type<Handler> TYPE = new Type<Handler>();
 
-	public Type<Handler> getAssociatedType() {
-	    return TYPE;
-	}
+    private final List<PersonProxy> people;
 
-	public List<PersonProxy> getPeople() {
-	    return people;
-	}
+    public DataAvailableEvent(List<PersonProxy> people) {
+        this.people = Collections.unmodifiableList(
+                new ArrayList<PersonProxy>(people));
+    }
 
-	@Override
-	protected void dispatch(Handler handler) {
-	    handler.onRowData(this);
-	}
+    public Type<Handler> getAssociatedType() {
+        return TYPE;
+    }
+
+    public List<PersonProxy> getPeople() {
+        return people;
+    }
+
+    @Override
+    protected void dispatch(Handler handler) {
+        handler.onRowData(this);
+    }
 }
