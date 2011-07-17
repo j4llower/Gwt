@@ -1,50 +1,23 @@
 package com.j4llower.testtask.gwt.server.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+
 import com.j4llower.testtask.gwt.domain.Person;
+import com.j4llower.testtask.gwt.server.service.hibernate.HibernateUtil;
 
-/**
- * Basic Data Access Object interface.
- * Provides CRUD operations with {@link Persistent} objects.
- */
-public interface PersonDao {
+public class PersonDao {
 
-    /**
-     * Save the persistent object.
-     *
-     * @param person object to save
-     */
-    void save(Person person);
-
-    /**
-     * Delete the object by it's id.
-     *
-     * @param id the id
-     * @return {@code true} if entity deleted successfully
-     */
-    boolean delete(Long id);
-
-    /**
-     * Get the object by id.
-     *
-     * @param id the id
-     * @return loaded Person instance
-     */
-    Person get(Long id);
-    
-    /**
-     * Get all object.
-     *
-     * @return loaded Person list
-     */
-    List<Person> getAll();
-
-    /**
-     * Check entity existance by id.
-     *
-     * @param id entity id
-     * @return {@code true} if entity exist
-     */
-    boolean isExist(Long id);
+	@SuppressWarnings("unchecked")
+	public List<Person> getAllPeople() {
+    	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        List<Person> persons = new ArrayList<Person>(session.createQuery("from Person")
+        		.list());
+        session.getTransaction().commit();    	
+    	return persons;
+    } 
+	
 }

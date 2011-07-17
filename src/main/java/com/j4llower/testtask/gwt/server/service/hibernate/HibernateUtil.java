@@ -1,7 +1,7 @@
 package com.j4llower.testtask.gwt.server.service.hibernate;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.AnnotationConfiguration;;
 
 public class HibernateUtil {
 
@@ -10,7 +10,7 @@ public class HibernateUtil {
 	  static {
 	    try {
 	      // Create the SessionFactory from hibernate.cfg.xml
-	      sessionFactory = new Configuration().configure().buildSessionFactory();
+	      sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 	    } catch (Throwable ex) {
 	      // Make sure you log the exception, as it might be swallowed
 	      System.err.println("Initial SessionFactory creation failed." + ex);

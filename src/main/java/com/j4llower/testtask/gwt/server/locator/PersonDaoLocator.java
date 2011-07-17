@@ -2,12 +2,8 @@ package com.j4llower.testtask.gwt.server.locator;
 
 import com.google.web.bindery.requestfactory.shared.ServiceLocator;
 
-/**
- * Generic locator service that can be referenced in 
- * the @Service annotation for any RequestFactory service stub
- */
-public class DaoServiceLocator implements ServiceLocator{
-
+public class PersonDaoLocator implements ServiceLocator {
+	
 	public Object getInstance(Class<?> clazz) {
 		try {
 			return clazz.newInstance();
@@ -17,4 +13,5 @@ public class DaoServiceLocator implements ServiceLocator{
 			throw new RuntimeException(e);
 		}
 	}
+
 }

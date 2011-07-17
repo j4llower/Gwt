@@ -9,7 +9,7 @@ import org.hibernate.classic.Session;
 import com.j4llower.testtask.gwt.domain.Person;
 import com.j4llower.testtask.gwt.server.service.PersonDao;
 
-public class PersonHibernateDao implements PersonDao {
+public class PersonHibernateDao { //implements PersonDao {
 
     /**
      * Type of entity

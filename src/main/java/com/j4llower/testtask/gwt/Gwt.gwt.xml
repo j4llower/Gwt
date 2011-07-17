@@ -2,10 +2,7 @@
 <module rename-to='gwt'>
   <!-- Inherit the core Web Toolkit stuff.                        -->
   <inherits name='com.google.gwt.user.User'/>
-  <inherits name="com.googlecode.objectify.Objectify" />
   <inherits name="com.google.web.bindery.requestfactory.RequestFactory" />
-  <inherits name='com.google.gwt.activity.Activity' />
-  <inherits name='com.google.gwt.place.Place' /> 
  
   <!-- Inherit the default GWT style sheet.  You can change       -->
   <!-- the theme of your GWT application by uncommenting          -->
@@ -21,9 +18,9 @@
   <entry-point class='com.j4llower.testtask.gwt.client.Gwt'/>
   
   <!-- Use ClientFactoryImpl by default -->
-  <replace-with class="com.j4llower.testtask.gwt.client.ClientFactoryImpl">
+  <!-- <replace-with class="com.j4llower.testtask.gwt.client.ClientFactoryImpl">
     <when-type-is class="com.j4llower.testtask.gwt.client.ClientFactory"/>
-  </replace-with>
+  </replace-with>  -->
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>

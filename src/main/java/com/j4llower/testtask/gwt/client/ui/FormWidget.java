@@ -11,35 +11,36 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.j4llower.testtask.gwt.client.ClientFactory;
+import com.j4llower.testtask.gwt.client.mvp.UserDataProvider;
 import com.j4llower.testtask.gwt.client.service.rpc.PersonStoreService;
 import com.j4llower.testtask.gwt.client.service.rpc.PersonStoreServiceAsync;
-import com.j4llower.testtask.gwt.shared.service.PersonRequestFactory;
 
 public class FormWidget extends Composite {
 
-	private static FormWidgetUiBinder uiBinder = GWT
-			.create(FormWidgetUiBinder.class);
-
-	interface FormWidgetUiBinder extends UiBinder<Widget, FormWidget> {
+	interface Binder extends UiBinder<Widget, FormWidget> {
 	}
 	
-	private final ClientFactory clientFactory;
-
-	@UiField Label errorLabel;
-	@UiField TextBox firstNameField;
-	@UiField TextBox familyNameField;
-	@UiField Button addButton; 
+	@UiField 
+	Label errorLabel;
+	@UiField 
+	TextBox firstNameField;
+	@UiField 
+	TextBox familyNameField;
+	@UiField 
+	Button addButton; 
 	
-	public FormWidget(ClientFactory clientFactory) {
-		initWidget(uiBinder.createAndBindUi(this));
-		
-		this.clientFactory = clientFactory;
-		
-		final PersonStoreServiceAsync personStoreService = GWT.create(PersonStoreService.class);
-		
-		//final PersonStoreServiceAsync personStoreService = 
-		//		this.clientFactory.getPersonStoreService(); 
+	private final UserDataProvider provider;
+	
+	public FormWidget(UserDataProvider provider) {
+		this.provider = provider;
+		Binder binder = GWT.create(Binder.class);
+	    initWidget(binder.createAndBindUi(this));
+	    initForm();
+	}
+	
+	private void initForm() {
+		final PersonStoreServiceAsync personStoreService = 
+				GWT.create(PersonStoreService.class);
 		
         addButton.addClickHandler(new ClickHandler() {
         	public void onClick(ClickEvent event) {
@@ -58,7 +59,10 @@ public class FormWidget extends Composite {
  								addButton.setEnabled(true);
  							}
 
- 							public void onSuccess(String arg0) {
+ 							public void onSuccess(String result) {
+ 								errorLabel.setText("Remote Procedure Call - Success: " +
+ 										result);
+ 								//provider.updateRowData();
  								addButton.setEnabled(true);
  							}
  						});
